@@ -30,7 +30,7 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/nameOfTrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10mm"
@@ -38,7 +38,7 @@
         android:layout_weight="0.2"
         android:ems="10"
         android:inputType="textPersonName"
-        android:paddingLeft="5mm" />
+        android:paddingLeft="5dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -49,14 +49,15 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10mm"
         android:layout_marginRight="10mm"
         android:layout_weight="0.2"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:paddingLeft="5dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -82,7 +83,7 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10mm"
@@ -92,7 +93,7 @@
         android:inputType="textPersonName" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/requireRisk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10mm"
