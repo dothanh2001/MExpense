@@ -14,8 +14,15 @@
         android:theme="@style/Theme.MExpense"
         tools:targetApi="31">
 
+        <activity android:name=".front_end.AddExpenseActivity"
+            android:launchMode="singleInstance">
+
+        </activity>
+
         <activity android:name=".front_end.AddTripActivity"
-            android:launchMode="singleInstance"></activity>
+            android:launchMode="singleInstance">
+
+        </activity>
         <activity
             android:name=".front_end.MainActivity"
             android:exported="true"

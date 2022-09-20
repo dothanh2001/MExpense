@@ -2,23 +2,31 @@ package com.example.m_expense.front_end;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.m_expense.R;
 import com.example.m_expense.back_end.MExpenseSystem;
+import com.example.m_expense.back_end.TripListViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     MExpenseSystem system;
 
+    TripListViewAdapter tripListViewAdapter;
+    ListView listViewTrip;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        system = MExpenseSystem.getInstance();
         setContentView(R.layout.activity_main);
+        system = MExpenseSystem.getInstance();
+
         Button insert = (Button) findViewById(R.id.insertButton);
         insert.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -29,12 +37,19 @@ public class MainActivity extends AppCompatActivity {
 //                finish();
             }
         });
+
+        tripListViewAdapter = new TripListViewAdapter(system.getTripList());
+        listViewTrip = findViewById(R.id.listTrip);
+        listViewTrip.setAdapter(tripListViewAdapter);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         System.out.println("RESTART MAIN ACTIVITY");
+        tripListViewAdapter = new TripListViewAdapter(system.getTripList());
+        listViewTrip = findViewById(R.id.listTrip);
+        listViewTrip.setAdapter(tripListViewAdapter);
     }
 
     @Override

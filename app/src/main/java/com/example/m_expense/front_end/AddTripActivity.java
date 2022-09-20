@@ -1,5 +1,6 @@
 package com.example.m_expense.front_end;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -13,14 +14,16 @@ import com.example.m_expense.back_end.MExpenseSystem;
 
 public class AddTripActivity extends AppCompatActivity {
 
-    private static AddTripActivity instance = null;
-
     EditText nameOfTrip;
     EditText destination;
     DatePicker datePicker;
+    EditText description;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch requireRisk;
-
     Button button;
+
+
+    private static AddTripActivity instance = null;
 
     public static AddTripActivity getInstance() {
         return instance;
@@ -36,6 +39,7 @@ public class AddTripActivity extends AppCompatActivity {
         nameOfTrip = findViewById(R.id.nameOfTrip);
         destination = findViewById(R.id.destination);
         datePicker = findViewById(R.id.datePicker);
+        description = findViewById(R.id.description);
         requireRisk = findViewById(R.id.requireRisk);
 
 
@@ -45,11 +49,24 @@ public class AddTripActivity extends AppCompatActivity {
             System.out.println(nameOfTrip.getText());
             System.out.println(destination.getText());
             System.out.println(datePicker.getDayOfMonth() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getYear());
+            System.out.println(description.getText());
             System.out.println(requireRisk.isChecked());
 
             MExpenseSystem.getInstance().addTrip();
         });
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("RESTART ADD TRIP ACTIVITY");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("RESUME ADD TRIP ACTIVITY");
     }
 
     @Override
@@ -66,6 +83,13 @@ public class AddTripActivity extends AppCompatActivity {
         instance = null;
     }
 
+    public void clearData() {
+        nameOfTrip.getText().clear();
+        destination.getText().clear();
+        description.getText().clear();
+        requireRisk.setChecked(false);
+    }
+
     public EditText getNameOfTrip() {
         return nameOfTrip;
     }
@@ -76,6 +100,10 @@ public class AddTripActivity extends AppCompatActivity {
 
     public DatePicker getDatePicker() {
         return datePicker;
+    }
+
+    public EditText getDescription() {
+        return description;
     }
 
     public Switch getRequireRisk() {

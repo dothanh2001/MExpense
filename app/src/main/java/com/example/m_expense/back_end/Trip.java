@@ -1,20 +1,27 @@
 package com.example.m_expense.back_end;
 
-
-import java.util.Date;
-
 public class Trip {
 
     String name;
     String destination;
-    Date date;
+    String date;
+    String description;
     boolean isRequireRisk;
 
-    public Trip(String name, String destination, Date date, boolean isRequireRisk) {
+    public Trip(String name, String destination, String date, String description, boolean isRequireRisk) {
         this.name = name;
         this.destination = destination;
         this.date = date;
+        this.description = description;
         this.isRequireRisk = isRequireRisk;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
@@ -33,11 +40,11 @@ public class Trip {
         this.destination = destination;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
