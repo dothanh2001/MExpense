@@ -1,11 +1,13 @@
 package com.example.m_expense.front_end;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,8 +38,8 @@ public class AddTripActivity extends AppCompatActivity {
 
         instance = this;
 
-        nameOfTrip = findViewById(R.id.nameOfTrip);
-        destination = findViewById(R.id.destination);
+        nameOfTrip = findViewById(R.id.kindOfTrip);
+        destination = findViewById(R.id.amount);
         datePicker = findViewById(R.id.datePicker);
         description = findViewById(R.id.description);
         requireRisk = findViewById(R.id.requireRisk);
@@ -52,7 +54,17 @@ public class AddTripActivity extends AppCompatActivity {
             System.out.println(description.getText());
             System.out.println(requireRisk.isChecked());
 
-            MExpenseSystem.getInstance().addTrip();
+            try {
+                MExpenseSystem.getInstance().addTrip();
+
+                Intent intent = new Intent(this, AddExpenseActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(AddTripActivity.getInstance(), "Add Trip Failed!", Toast.LENGTH_LONG).show();
+            }
+
+
         });
 
     }

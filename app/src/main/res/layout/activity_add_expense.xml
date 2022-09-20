@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nameOfTrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -30,13 +30,14 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/nameOfTrip"
+        android:id="@+id/kindOfTrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10mm"
         android:layout_marginRight="10mm"
         android:layout_weight="0.2"
         android:ems="10"
+        android:hint="Please choose your kind of trip"
         android:inputType="textPersonName"
         android:paddingLeft="5dp" />
 
@@ -49,13 +50,14 @@
         android:text="AMOUNT OF THE EXPENSE" />
 
     <EditText
-        android:id="@+id/destination"
+        android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10mm"
         android:layout_marginRight="10mm"
         android:layout_weight="0.2"
         android:ems="10"
+        android:hint="Please put the price here"
         android:inputType="textPersonName"
         android:paddingLeft="5dp" />
 
@@ -69,7 +71,8 @@
         android:layout_marginRight="10mm"
         android:layout_weight="0.2"
         android:textSize="30dp"
-        android:text="ADD EXPENSE" />
+        android:text="ADD EXPENSE"
+        app:cornerRadius="100dp" />
 
 
 </LinearLayout>

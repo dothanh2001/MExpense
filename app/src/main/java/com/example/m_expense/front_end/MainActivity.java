@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.m_expense.R;
 import com.example.m_expense.back_end.MExpenseSystem;
 import com.example.m_expense.back_end.TripListViewAdapter;
+import com.example.m_expense.database.SQLHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,15 +35,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AddTripActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-//                finish();
             }
         });
 
         tripListViewAdapter = new TripListViewAdapter(system.getTripList());
         listViewTrip = findViewById(R.id.listTrip);
         listViewTrip.setAdapter(tripListViewAdapter);
+
+        SQLHelper helper = new SQLHelper(this, "test.sqlite", null, 1);
+        helper.queryData("CREATE TABLE  IF NOT EXISTS Trip(Id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(200))");
+        helper.queryData("INSERT INTO Trip VALUES(null, \'Ha Long Tour\')");
+        helper.queryData("INSERT INTO Trip VALUES(null, \'Cua Lo - Nghe An\')");
+
+        Cursor cursor = helper.getData("SELECT * FROM Trip");
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(1);
+            Toast.makeText(this, name, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

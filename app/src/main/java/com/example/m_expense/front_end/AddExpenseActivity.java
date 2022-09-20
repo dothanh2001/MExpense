@@ -1,12 +1,24 @@
 package com.example.m_expense.front_end;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.m_expense.R;
+import com.example.m_expense.back_end.MExpenseSystem;
+
 public class AddExpenseActivity extends AppCompatActivity {
 
+    TextView nameOfTrip;
+    EditText kindOfTrip;
+    EditText amount;
+    Button button;
 
     private static AddExpenseActivity instance = null;
 
@@ -14,10 +26,30 @@ public class AddExpenseActivity extends AppCompatActivity {
         return instance;
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+        setContentView(R.layout.activity_add_expense);
+
+        instance = this;
+
+        nameOfTrip = findViewById(R.id.nameOfTrip);
+        kindOfTrip = findViewById(R.id.kindOfTrip);
+        amount = findViewById(R.id.amount);
+        button = findViewById(R.id.button);
+
+        nameOfTrip.setText(MExpenseSystem.getInstance().getCurrentTrip().getName());
+        button.setOnClickListener(event -> {
+            try {
+                MExpenseSystem.getInstance().addExpense();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Add Expense Failed", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     @Override
@@ -36,5 +68,21 @@ public class AddExpenseActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         System.out.println("Stop ADD EXPENSE ACTIVITY");
+    }
+
+    public TextView getNameOfTrip() {
+        return nameOfTrip;
+    }
+
+    public EditText getKindOfTrip() {
+        return kindOfTrip;
+    }
+
+    public EditText getAmount() {
+        return amount;
+    }
+
+    public Button getButton() {
+        return button;
     }
 }

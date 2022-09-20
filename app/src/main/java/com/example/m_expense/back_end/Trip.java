@@ -2,11 +2,14 @@ package com.example.m_expense.back_end;
 
 public class Trip {
 
-    String name;
-    String destination;
-    String date;
-    String description;
+    String name = "";
+    String destination = "";
+    String date = "";
+    String description = "";
     boolean isRequireRisk;
+
+    String amount = "";
+    String kindOf = "";
 
     public Trip(String name, String destination, String date, String description, boolean isRequireRisk) {
         this.name = name;
@@ -14,6 +17,22 @@ public class Trip {
         this.date = date;
         this.description = description;
         this.isRequireRisk = isRequireRisk;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getKindOf() {
+        return kindOf;
+    }
+
+    public void setKindOf(String kindOf) {
+        this.kindOf = kindOf;
     }
 
     public String getDescription() {
