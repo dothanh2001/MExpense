@@ -3,20 +3,40 @@ package com.example.m_expense.back_end;
 public class Trip {
 
     String name = "";
-    String destination = "";
-    String date = "";
+    String startDestination = "";
+    String endDestination = "";
+    String startDate = "";
+    String endDate ="";
     String description = "";
     boolean isRequireRisk;
 
     String amount = "";
     String kindOf = "";
 
-    public Trip(String name, String destination, String date, String description, boolean isRequireRisk) {
+    public Trip(String name, String startDestination, String endDestination, String startDate, String endDate, String description, boolean isRequireRisk) {
         this.name = name;
-        this.destination = destination;
-        this.date = date;
+        this.startDestination = startDestination;
+        this.endDestination = endDestination;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.description = description;
         this.isRequireRisk = isRequireRisk;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getEndDestination() {
+        return endDestination;
+    }
+
+    public void setEndDestination(String endDestination) {
+        this.endDestination = endDestination;
     }
 
     public String getAmount() {
@@ -51,20 +71,20 @@ public class Trip {
         this.name = name;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getStartDestination() {
+        return startDestination;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setStartDestination(String startDestination) {
+        this.startDestination = startDestination;
     }
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public boolean isRequireRisk() {

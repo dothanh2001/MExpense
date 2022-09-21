@@ -17,8 +17,10 @@ import com.example.m_expense.back_end.MExpenseSystem;
 public class AddTripActivity extends AppCompatActivity {
 
     EditText nameOfTrip;
-    EditText destination;
+    EditText start_destination;
+    EditText end_destination;
     DatePicker datePicker;
+    DatePicker datePickerEnd;
     EditText description;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch requireRisk;
@@ -39,8 +41,10 @@ public class AddTripActivity extends AppCompatActivity {
         instance = this;
 
         nameOfTrip = findViewById(R.id.kindOfTrip);
-        destination = findViewById(R.id.amount);
+        start_destination = findViewById(R.id.start_destination);
+        end_destination = findViewById(R.id.end_destination);
         datePicker = findViewById(R.id.datePicker);
+        datePickerEnd = findViewById(R.id.datePickerEnd);
         description = findViewById(R.id.description);
         requireRisk = findViewById(R.id.requireRisk);
 
@@ -49,7 +53,7 @@ public class AddTripActivity extends AppCompatActivity {
         button.setOnClickListener(event-> {
             System.out.println("Thanh");
             System.out.println(nameOfTrip.getText());
-            System.out.println(destination.getText());
+            System.out.println(start_destination.getText());
             System.out.println(datePicker.getDayOfMonth() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getYear());
             System.out.println(description.getText());
             System.out.println(requireRisk.isChecked());
@@ -97,18 +101,31 @@ public class AddTripActivity extends AppCompatActivity {
 
     public void clearData() {
         nameOfTrip.getText().clear();
-        destination.getText().clear();
+        start_destination.getText().clear();
         description.getText().clear();
         requireRisk.setChecked(false);
+    }
+
+    public EditText getEnd_destination() {
+        return end_destination;
+    }
+
+    public void setEnd_destination(EditText end_destination) {
+        this.end_destination = end_destination;
+    }
+
+    public DatePicker getDatePickerEnd() {
+        return datePickerEnd;
     }
 
     public EditText getNameOfTrip() {
         return nameOfTrip;
     }
 
-    public EditText getDestination() {
-        return destination;
+    public EditText getStart_destination() {
+        return start_destination;
     }
+
 
     public DatePicker getDatePicker() {
         return datePicker;

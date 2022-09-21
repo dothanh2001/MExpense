@@ -46,10 +46,12 @@ public class TripListViewAdapter extends BaseAdapter {
 //        ((TextView) viewTrip.findViewById(R.id.nameproduct)).setText(String.format("Tên SP : %s", product.name));
 //        ((TextView) viewTrip.findViewById(R.id.priceproduct)).setText(String.format("Giá %d", product.price));
         ((TextView) viewTrip.findViewById(R.id.name)).setText(trip.getName());
-        ((TextView) viewTrip.findViewById(R.id.fromDate)).setText(trip.getDate());
-        ((TextView) viewTrip.findViewById(R.id.toDate)).setText(trip.getDescription());
-        ((TextView) viewTrip.findViewById(R.id.price)).setText("1000$");
-        ((TextView) viewTrip.findViewById(R.id.amount)).setText(trip.getDestination());
+        ((TextView) viewTrip.findViewById(R.id.fromDate)).setText(trip.getStartDate());
+        ((TextView) viewTrip.findViewById(R.id.toDate)).setText(trip.getEndDate());
+        ((TextView) viewTrip.findViewById(R.id.start_destination)).setText(trip.getStartDestination());
+        ((TextView) viewTrip.findViewById(R.id.end_destination)).setText(trip.getEndDestination());
+        ((TextView) viewTrip.findViewById(R.id.amount)).setText(trip.getAmount());
+
 
         return viewTrip;
     }

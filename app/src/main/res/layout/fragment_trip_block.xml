@@ -13,9 +13,9 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="3"
         android:text="@string/hello_blank_fragment"
-        android:textSize="50px"
-        android:layout_weight="3"/>
+        android:textSize="40dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="From"
-                android:textSize="20px"
+                android:textSize="15dp"
                 android:layout_weight="1"/>
 
             <TextView
@@ -42,7 +42,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="To"
-                android:textSize="20px"
+                android:textSize="15dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/start_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="start"
+                android:textSize="15dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/end_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="end"
+                android:textSize="15dp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -57,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="fasdqwe"
-                android:textSize="20px"
+                android:textSize="15dp"
                 android:layout_weight="1"/>
 
             <TextView
@@ -65,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="fasdqw"
-                android:textSize="20px"
+                android:textSize="15dp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -76,20 +99,20 @@
             android:layout_weight="2">
 
             <TextView
-                android:id="@+id/price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="fasdasd"
-                android:textSize="20px"
-                android:layout_weight="1"/>
-
-            <TextView
                 android:id="@+id/amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="afasd"
-                android:textSize="20px"
+                android:text="fasdasd"
+                android:textSize="15dp"
                 android:layout_weight="1"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="afasd"-->
+<!--                android:textSize="20px"-->
+<!--                android:layout_weight="1"/>-->
         </LinearLayout>
 
     </LinearLayout>

@@ -5,10 +5,10 @@ import android.widget.Toast;
 
 import com.example.m_expense.front_end.AddExpenseActivity;
 import com.example.m_expense.front_end.AddTripActivity;
+import com.example.m_expense.front_end.TripDetailActivity;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MExpenseSystem {
@@ -23,12 +23,12 @@ public class MExpenseSystem {
     public static MExpenseSystem getInstance() {
         if (instance == null) {
             instance = new MExpenseSystem();
-            instance.tripList.add(new Trip(
-                    "default name",
-                    "default destination",
-                    "10/01/2022",
-                    "no description",
-                    true));
+//            instance.tripList.add(new Trip(
+//                    "default name",
+//                    "default destination",
+//                    "10/01/2022",
+//                    "no description",
+//                    true));
         }
         return instance;
     }
@@ -52,16 +52,19 @@ public class MExpenseSystem {
     public void addTrip() {
         AddTripActivity addTripActivity = AddTripActivity.getInstance();
         String name = String.valueOf(addTripActivity.getNameOfTrip().getText());
-        String destination = String.valueOf(addTripActivity.getDestination().getText());
+        String startDestination = String.valueOf(addTripActivity.getStart_destination().getText());
+        String endDestination = String.valueOf(addTripActivity.getEnd_destination().getText());
         DatePicker datePicker = addTripActivity.getDatePicker();
+        DatePicker datePickerEnd = addTripActivity.getDatePickerEnd();
 
-        String date = datePicker.getDayOfMonth() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getYear();
+        String startDate = datePicker.getDayOfMonth() + "/" + (datePicker.getMonth() + 1) + "/" + datePicker.getYear();
+        String endDate = datePickerEnd.getDayOfMonth() + "/" + (datePickerEnd.getMonth() + 1) + "/" + datePickerEnd.getYear();
 
         String description = String.valueOf(addTripActivity.getDescription().getText());
         boolean isRequireRisk = addTripActivity.getRequireRisk().isChecked();
 
-        if (name.equals("") || destination.equals("")) throw new InvalidParameterException();
-        Trip newTrip = new Trip(name, destination, date, description, isRequireRisk);
+        if (name.equals("") || startDestination.equals("")) throw new InvalidParameterException();
+        Trip newTrip = new Trip(name, startDestination, endDestination, startDate, endDate, description, isRequireRisk);
         tripList.add(newTrip);
         setCurrentTrip(newTrip);
         addTripActivity.clearData();
@@ -73,7 +76,7 @@ public class MExpenseSystem {
         AddExpenseActivity expenseActivity = AddExpenseActivity.getInstance();
         String kind = String.valueOf(expenseActivity.getKindOfTrip().getText());
         String amount = String.valueOf(expenseActivity.getAmount().getText());
-        if (kind.equals("") || Integer.parseInt(amount) < 0) throw new InvalidParameterException();
+        if (kind.equals("")) throw new InvalidParameterException();
         trip.setKindOf(kind);
         trip.setAmount(amount);
         Toast.makeText(expenseActivity, "Add Expense succesfully!", Toast.LENGTH_LONG).show();
@@ -85,5 +88,15 @@ public class MExpenseSystem {
             if (trip.getName().contains(name)) result.add(trip);
         }
         return result;
+    }
+
+    public void viewDetail() {
+        TripDetailActivity tripDetailActivity = TripDetailActivity.getInstance();
+        tripDetailActivity.getAmount().setText(currentTrip.getAmount());
+        tripDetailActivity.getKindOfTrip().setText(currentTrip.getKindOf());
+        tripDetailActivity.getStartDate().setText(currentTrip.getStartDate());
+        tripDetailActivity.getEndDate().setText(currentTrip.getEndDate());
+        tripDetailActivity.getStartDestionation().setText(currentTrip.getStartDestination());
+        tripDetailActivity.getEndDestination().setText(currentTrip.getEndDestination());
     }
 }
