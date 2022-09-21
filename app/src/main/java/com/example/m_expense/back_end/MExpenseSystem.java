@@ -1,5 +1,6 @@
 package com.example.m_expense.back_end;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.widget.DatePicker;
@@ -90,14 +91,19 @@ public class MExpenseSystem {
         Toast.makeText(expenseActivity, "Add Expense to trip " + trip.getName() + " succesfully!", Toast.LENGTH_LONG).show();
     }
 
-    public void viewDetail() {
+    @SuppressLint("SetTextI18n")
+    public void viewDetail(Trip trip) {
         TripDetailActivity tripDetailActivity = TripDetailActivity.getInstance();
-        tripDetailActivity.getAmount().setText(currentTrip.getAmount());
-        tripDetailActivity.getKindOfTrip().setText(currentTrip.getKindOf());
-        tripDetailActivity.getStartDate().setText(currentTrip.getStartDate());
-        tripDetailActivity.getEndDate().setText(currentTrip.getEndDate());
-        tripDetailActivity.getStartDestionation().setText(currentTrip.getStartDestination());
-        tripDetailActivity.getEndDestination().setText(currentTrip.getEndDestination());
+//        tripDetailActivity.getAmount().setText(String.valueOf(currentTrip.getAmount()));
+//        tripDetailActivity.getKindOfTrip().setText(currentTrip.getKindOf());
+        tripDetailActivity.getName().setText(trip.getName());
+        tripDetailActivity.getAmount().setText("Total Amount: " + trip.getAmount());
+        tripDetailActivity.getStartDate().setText(trip.getStartDate());
+        tripDetailActivity.getEndDate().setText(trip.getEndDate());
+        tripDetailActivity.getStartDestionation().setText(trip.getStartDestination());
+        tripDetailActivity.getEndDestination().setText(trip.getEndDestination());
+        tripDetailActivity.getDescription().setText(trip.getDescription());
+        tripDetailActivity.getRequireRisk().setChecked(trip.isRequireRisk());
     }
 
     public List<Trip> searchTripByName(String name) {
@@ -120,12 +126,13 @@ public class MExpenseSystem {
         //create table Expense
         helper.queryData("CREATE TABLE  IF NOT EXISTS Expense(" +
                 "tripID INTEGER, kindOf VARCHAR(200), amount INTEGER)");
-
-        helper.queryData("INSERT INTO Trip VALUES(null" + ", \'" + "Food tour" + "\'"
-                + ", \'" + "Ha Noi" + "\'" + ", \'" + "Hai Phong" + "\'"
-                + ", \'" + "21/9/2022" + "\'" + ", \'" + "30/9/2022" + "\'"
-                + ", \'" + "food tour mien Bac" + "\'" + ", \'" + 1 + "\'" +  ")");
+//
+//        helper.queryData("INSERT INTO Trip VALUES(null" + ", \'" + "Food tour" + "\'"
+//                + ", \'" + "Ha Noi" + "\'" + ", \'" + "Hai Phong" + "\'"
+//                + ", \'" + "21/9/2022" + "\'" + ", \'" + "30/9/2022" + "\'"
+//                + ", \'" + "food tour mien Bac" + "\'" + ", \'" + 1 + "\'" +  ")");
 //        helper.queryData("INSERT INTO Trip VALUES(null, \'Cua Lo - Nghe An\')");
+        // remove DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
 
         Cursor cursor = helper.getData("SELECT * FROM Trip");
         while (cursor.moveToNext()) {

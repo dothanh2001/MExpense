@@ -1,7 +1,10 @@
 package com.example.m_expense.front_end;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.m_expense.R;
@@ -9,13 +12,17 @@ import com.example.m_expense.back_end.MExpenseSystem;
 
 public class TripDetailActivity extends AppCompatActivity {
 
-    EditText amount;
-    EditText kindOfTrip;
+    TextView name;
+
+    TextView amount;
     EditText startDestionation;
     EditText endDestination;
     EditText startDate;
     EditText endDate;
     EditText description;
+    Switch requireRisk;
+
+    EditText kindOfTrip;
 
     private static TripDetailActivity instance = null;
 
@@ -24,6 +31,7 @@ public class TripDetailActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +39,17 @@ public class TripDetailActivity extends AppCompatActivity {
 
         instance = this;
 
-        amount = findViewById(R.id.amount);
-        kindOfTrip = findViewById(R.id.kindOfTrip);
+        name = findViewById(R.id.nameOfTrip);
         startDestionation = findViewById(R.id.start_destination);
         endDestination = findViewById(R.id.end_destination);
         startDate = findViewById(R.id.start_date);
         endDate = findViewById(R.id.end_date);
         description = findViewById(R.id.description);
+        requireRisk = findViewById(R.id.requireRisk);
+        amount = findViewById(R.id.amount);
+//        kindOfTrip = findViewById(R.id.kindOfTrip);
 
-        MExpenseSystem.getInstance().viewDetail();
+        MExpenseSystem.getInstance().viewDetail( MExpenseSystem.getInstance().getCurrentTrip());
     }
 
     @Override
@@ -66,13 +76,18 @@ public class TripDetailActivity extends AppCompatActivity {
         System.out.println("DESTROY DETAIL TRIP ACTIVITY");
     }
 
-    public EditText getAmount() {
+    public TextView getName() {
+        return name;
+    }
+
+    public Switch getRequireRisk() {
+        return requireRisk;
+    }
+
+    public TextView getAmount() {
         return amount;
     }
 
-    public void setAmount(EditText amount) {
-        this.amount = amount;
-    }
 
     public EditText getKindOfTrip() {
         return kindOfTrip;
