@@ -55,4 +55,12 @@ public class TripListViewAdapter extends BaseAdapter {
 
         return viewTrip;
     }
+
+    public List<Trip> getTripList() {
+        return tripList;
+    }
+
+    public void setTripList(List<Trip> tripList) {
+        this.tripList = tripList;
+    }
 }

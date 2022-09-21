@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     TripListViewAdapter tripListViewAdapter;
     ListView listViewTrip;
+
     private static MainActivity instance = null;
 
     public static MainActivity getInstance() {
@@ -42,13 +44,20 @@ public class MainActivity extends AppCompatActivity {
         system = MExpenseSystem.getInstance();
         system.prepareDatabase();
 
-        Button insert = (Button) findViewById(R.id.insertButton);
-        insert.setOnClickListener(new View.OnClickListener(){
+        Button add = (Button) findViewById(R.id.insertButton);
+        add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AddTripActivity.class);
                 startActivity(intent);
             }
+        });
+
+        findViewById(R.id.btsearch).setOnClickListener(e -> {
+            String input = ((EditText)findViewById(R.id.search)).getText().toString();
+            List<Trip> result = system.searchTripByName(input);
+            tripListViewAdapter.setTripList(result);
+            tripListViewAdapter.notifyDataSetChanged();
         });
 
         tripListViewAdapter = new TripListViewAdapter(system.getTripList());

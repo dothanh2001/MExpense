@@ -106,14 +106,6 @@ public class MExpenseSystem {
         tripDetailActivity.getRequireRisk().setChecked(trip.isRequireRisk());
     }
 
-    public List<Trip> searchTripByName(String name) {
-        List<Trip> result = new ArrayList<>();
-        for (Trip trip : tripList) {
-            if (trip.getName().contains(name)) result.add(trip);
-        }
-        return result;
-    }
-
     public void prepareDatabase() {
         SQLHelper helper = SQLHelper.getInstance();
         //create table Trip
@@ -187,4 +179,11 @@ public class MExpenseSystem {
         helper.queryData(query);
     }
 
+    public List<Trip> searchTripByName(String name) {
+        List<Trip> result = new ArrayList<>();
+        for (Trip trip : tripList) {
+            if (trip.getName().contains(name)) result.add(trip);
+        }
+        return result;
+    }
 }
