@@ -43,13 +43,19 @@ public class AddExpenseActivity extends AppCompatActivity {
         nameOfTrip.setText(MExpenseSystem.getInstance().getCurrentTrip().getName());
         button.setOnClickListener(event -> {
             try {
-                MExpenseSystem.getInstance().addExpense();
+                MExpenseSystem.getInstance().addExpense(MExpenseSystem.getInstance().getCurrentTrip());
+                clear();
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(this, "Add Expense Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Add Expense to trip " + MExpenseSystem.getInstance().getCurrentTrip().getName() + " failed!", Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+
+    public void clear() {
+        kindOfTrip.getText().clear();
+        amount.getText().clear();
     }
 
     @Override

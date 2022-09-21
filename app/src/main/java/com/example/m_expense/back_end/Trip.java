@@ -1,5 +1,8 @@
 package com.example.m_expense.back_end;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trip {
 
     String name = "";
@@ -10,8 +13,10 @@ public class Trip {
     String description = "";
     boolean isRequireRisk;
 
-    String amount = "";
+    int amount = 0;
     String kindOf = "";
+
+    List<Expense> expenseList = new ArrayList<>();
 
     public Trip(String name, String startDestination, String endDestination, String startDate, String endDate, String description, boolean isRequireRisk) {
         this.name = name;
@@ -21,6 +26,14 @@ public class Trip {
         this.endDate = endDate;
         this.description = description;
         this.isRequireRisk = isRequireRisk;
+    }
+
+    public List<Expense> getExpenseList() {
+        return expenseList;
+    }
+
+    public void setExpenseList(List<Expense> expenseList) {
+        this.expenseList = expenseList;
     }
 
     public String getEndDate() {
@@ -39,11 +52,11 @@ public class Trip {
         this.endDestination = endDestination;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

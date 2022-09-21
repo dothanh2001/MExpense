@@ -26,13 +26,21 @@ public class MainActivity extends AppCompatActivity {
 
     TripListViewAdapter tripListViewAdapter;
     ListView listViewTrip;
+    private static MainActivity instance = null;
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        instance = this;
         system = MExpenseSystem.getInstance();
+        system.prepareDatabase();
 
         Button insert = (Button) findViewById(R.id.insertButton);
         insert.setOnClickListener(new View.OnClickListener(){
@@ -62,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 //        SQLHelper helper = new SQLHelper(this, "test.sqlite", null, 1);
 //        helper.queryData("CREATE TABLE  IF NOT EXISTS Trip(Id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(200))");
 //        helper.queryData("INSERT INTO Trip VALUES(null, \'Ha Long Tour\')");

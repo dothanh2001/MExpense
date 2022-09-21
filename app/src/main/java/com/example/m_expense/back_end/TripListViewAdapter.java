@@ -50,7 +50,7 @@ public class TripListViewAdapter extends BaseAdapter {
         ((TextView) viewTrip.findViewById(R.id.toDate)).setText(trip.getEndDate());
         ((TextView) viewTrip.findViewById(R.id.start_destination)).setText(trip.getStartDestination());
         ((TextView) viewTrip.findViewById(R.id.end_destination)).setText(trip.getEndDestination());
-        ((TextView) viewTrip.findViewById(R.id.amount)).setText(trip.getAmount());
+        ((TextView) viewTrip.findViewById(R.id.amount)).setText(String.valueOf(trip.getAmount()));
 
 
         return viewTrip;
